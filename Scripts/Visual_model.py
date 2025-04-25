@@ -160,7 +160,7 @@ def extract_visual_features(features_dict):
 def prepare_training_data(self):
     X, y = [], []
     failed_participants = []
-    pid_arr = [300, 303, 304, 305, 307, 308, 309, 310, 313, 314, 315]
+    pid_arr = [300, 303, 304, 305, 307, 308, 309, 310, 313, 314, 315, 326, 327, 328, 329]
     # for pid in self.train_labels['Participant_ID']:
     for pid in pid_arr:
         try:
@@ -488,7 +488,7 @@ def evaluate_on_test(self):
         raise ValueError("Model has not been trained yet. Call build_model() first.")
 
     X_test, y_test = [], []
-    pid_arr = [600, 604, 605, 606, 607, 609, 615, 618, 619, 620]
+    pid_arr = [600, 604, 605, 606, 615, 618, 619, 620, 624, 631, 634, 635, 649, 655, 705, 716]
     # for pid in self.test_labels['Participant_ID']:
     for pid in pid_arr:
         features = load_visual_features(pid)
@@ -629,16 +629,16 @@ rt_predictor = RealTimeAnxietyPredictor(pipeline.pipeline)
 print("Real-time predictor ready.")
 
 # LOADING THE MODEL
-import pickle
+# import pickle
 
-with open('anxiety_model.pkl', 'rb') as f:
-    trained_pipeline = pickle.load(f)
+# with open('anxiety_model.pkl', 'rb') as f:
+#     trained_pipeline = pickle.load(f)
 
-pipeline = trained_pipeline
+# pipeline = trained_pipeline
 
-print("\nEvaluating on test set...")
-test_score, predictions, y_true = evaluate_on_test(pipeline)
+# print("\nEvaluating on test set...")
+# test_score, predictions, y_true = evaluate_on_test(pipeline)
 
-print("\nInitializing real-time predictor...")
-rt_predictor = RealTimeAnxietyPredictor(pipeline.pipeline)
-print("Real-time predictor ready.")
+# print("\nInitializing real-time predictor...")
+# rt_predictor = RealTimeAnxietyPredictor(pipeline.pipeline)
+# print("Real-time predictor ready.")
